@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="bismillahFlow" doc:id="9f7a5415-97a8-4b8e-b333-363f9245129e" >
 		<http:listener doc:name="Listener" doc:id="26e1c614-7654-4582-93bc-c68681120f2b" config-ref="HTTP_Listener_config" path="/bismillah"/>
-		<logger level="INFO" doc:name="Logger" doc:id="f2e95635-9114-42c4-b988-35f3190b1d03" />
+		<logger level="INFO" doc:name="Logger" doc:id="f2e95635-9114-42c4-b988-35f3190b1d03" message="Logger&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; #[payload]"/>
 		<ee:transform doc:name="Transform Message" doc:id="f578ff39-0137-40be-9b24-3126d049a8f5" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
