@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d7415295-d16a-44ee-a065-9d8a1dc9ee79" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="bismillahFlow" doc:id="9f7a5415-97a8-4b8e-b333-363f9245129e" >
+		<http:listener doc:name="Listener" doc:id="26e1c614-7654-4582-93bc-c68681120f2b" config-ref="HTTP_Listener_config" path="/bismillah"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f2e95635-9114-42c4-b988-35f3190b1d03" />
+		<ee:transform doc:name="Transform Message" doc:id="f578ff39-0137-40be-9b24-3126d049a8f5" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"start with" : " Bismillah"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
